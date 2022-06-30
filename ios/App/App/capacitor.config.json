@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.likhith.deploy",
+	"appName": "ngcap",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
