@@ -22,7 +22,7 @@ pipeline {
         
         stage('Deploy iOS') {
             steps {
-                sh '/usr/local/bin/ionic-cloud deploy ios --app-id=190847cd --build-id="$APPFLOW_BUILD_ID" --destination "TestFlight" --token=$IONIC_TOKEN'
+                sh (returnStdout:true, script:'/usr/local/bin/ionic-cloud deploy ios --app-id=190847cd --build-id="$APPFLOW_BUILD_ID" --destination "TestFlight" --token=$IONIC_TOKEN')
             }
         }
     }
