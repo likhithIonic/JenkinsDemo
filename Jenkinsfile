@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Install Cloud CLI') {
             steps {
-                catchError(buildResult: 'FAILURE', stageResult: 'SUCCESS') {
+                catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
                     sh 'curl -fsSL https://ionic.io/get-ionic-cloud-cli | bash'
                 }
             }
