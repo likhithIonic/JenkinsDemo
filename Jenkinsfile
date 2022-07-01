@@ -24,7 +24,6 @@ pipeline {
             steps {
                 archiveArtifacts artifacts:'**/app.ipa', onlyIfSuccessful: true
             }
-            }
         }        
         
         stage('Deploy iOS') {
