@@ -15,10 +15,17 @@ pipeline {
         stage('build iOS'){
             steps {
                 script{
-                env.APPFLOW_BUILD_ID = sh(returnStdout:true, script:'/usr/local/bin/ionic-cloud build ios app-store --app-id 190847cd --commit="$GIT_COMMIT" --signing-cert delpoydemo --token=$IONIC_TOKEN --json | /opt/homebrew/bin/jq -r ".buildId"').trim()
+                env.APPFLOW_BUILD_ID = sh(returnStdout:true, script:'/usr/local/bin/ionic-cloud build ios app-store --app-id 190847cd --commit="$GIT_COMMIT" --signing-cert delpoydemo --ipa-name "app.ipa" --json --token=$IONIC_TOKEN | /opt/homebrew/bin/jq -r ".buildId"').trim()
                 }
             }
         }
+
+        stage('Save the artifact'){
+            steps {
+                archiveArtifacts artifacts:'**/app.ipa', onlyIfSuccessful: true
+            }
+            }
+        }        
         
         stage('Deploy iOS') {
             steps {
